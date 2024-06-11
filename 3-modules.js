@@ -3,6 +3,11 @@
 const names = require("./4-names")
 const SayHi = require("./5-utils")
 const data = require("./6-alternative-flavor")
+
 require("./7-some-values")
 
 console.log(names)
+
+SayHi("Susan")
+SayHi(names.john)
+SayHi(names.peter)
