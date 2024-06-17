@@ -1,0 +1,16 @@
+{
+  "name": "html-text-getter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "request-promise": "^4.2.6"
+  }
+}

@@ -1,0 +1,3 @@
+o que falta fazer:
+Adicionar uma validação mais precisa de datas
+Dar a opção de salvar em um arquivo

@@ -1,0 +1,17 @@
+{
+  "name": "github-most-starred",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "tests": "node tests.js",
+    "playground" : "node playground.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@octokit/rest": "^20.1.1",
+    "dotenv": "^16.4.5"
+  }
+}
