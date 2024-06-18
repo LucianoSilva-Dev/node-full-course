@@ -1,0 +1,9 @@
+O que o app precisa ser capz de fazer:
+
+1 - aceitar argumento de entrada (opcional) e saida (opcioonal) para as imagens, caso algum não for 
+    fornecido, então devera ler-se / escrever-se as imagens no diretorio do app
+
+2 - comprimir imagens .jpg .png, etc...
+
+3 - argumento de entrada pode ser tanto url quanto arquivo local. Caso seja url, devera trabalhar
+    com obter / escrever os dados da imagem em forma de 'stream'
