@@ -4,14 +4,15 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "tests": "node tests.js",
-    "playground" : "node playground.js"
+    "testes": "node testes.js",
+    "playground": "node playground.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@octokit/rest": "^20.1.1",
+    "dayjs": "^1.11.11",
     "dotenv": "^16.4.5"
   }
 }
