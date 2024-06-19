@@ -14,59 +14,47 @@ if(isURLRegex.test(input)){
 }
 
 else{
-    const dirname = path.dirname(input)
-    const basename = path.basename(input)
-    const fileextension = path.extname(input)
-    const acceptedExtensions = /^.*\.(jpg|JPG|gif|GIF|png|PNG)$/
+    let directory
 
-    console.log(basename, dirname, fileextension)
-
-    let realInput
-    let type
-
-    //ARRUMAR
-
-    //é arquivo unico ou diretorio?
-    if(basename !== "."){
-        //aqui é arquivo unico
-        if(fileextension.length > 0){
-            realInput = basename
-            type = 0 // arquivo
-        }
-        //diretório 
-        else{
-            realInput = dirname
-            type = 1 //diretorio
-        }
+    if(input){
+        directory = path.join(path.dirname(input), path.basename(input))
     }
 
-    //diretório desse arquivo
     else{
-        realInput = module.path
-        type = 1
+        directory = "."
     }
-
+    
     const compress = async () => {
-        let files
-
-        switch(type){
-            case 0:
-                break
-            case 1:
-                fs.readdir(realInput, (err, dirFiles) => {
-                    if(err){
-                        console.log(err)
-                        return null
-                    }
-
-                    files = dirFiles
-                })
-                
-        }
-
-        if(files){
-            console.log(files)
-        }
+        const dir = await fs.readdir(directory)
+                            .catch(err => 
+                            console.log(`Não foi possivel localizar o diretório de entrada ${err.path}`))
         
+        const extensionRegex = /^.*\.(jpg|JPG|gif|GIF|png|PNG)$/
+
+        const files = dir.filter(file => extensionRegex.test(file))
+
+        files.forEach(async (file) => {
+            const fileToCompress =  await fs.readFile(path.join(directory, file))
+                                          .catch(err => 
+                                          console.log(`Não foi possivel ler o arquivo ${err.message}`))
+
+            const compressedFile = await sharp(fileToCompress)
+                                         .toFormat("jpeg", {
+                                            progressive: true,
+                                            quality: 90})
+                                         .toBuffer()
+            
+            if(output){
+                await fs.writeFile(path.join(output, file), compressedFile)
+                      .catch(err => 
+                      console.log(`Não foi possivel achar o diretório de saida ${path.dirname(err.path)}`))
+            }
+            else{
+                await fs.writeFile(file, compressedFile)
+            }
+            
+        });
     }
+
+    compress()
 }

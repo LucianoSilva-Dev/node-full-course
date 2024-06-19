@@ -7,3 +7,7 @@ O que o app precisa ser capz de fazer:
 
 3 - argumento de entrada pode ser tanto url quanto arquivo local. Caso seja url, devera trabalhar
     com obter / escrever os dados da imagem em forma de 'stream'
+
+refatoração:
+1 - dividir função compress em funçoes menores
+2 - (talvez) dar a opção de comprimir um arquivo especifíco
