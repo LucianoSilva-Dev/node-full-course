@@ -1,13 +1,8 @@
-O que o app precisa ser capz de fazer:
+controller/compress-dir.js
+    1 - criar o diretorio output fornecido caso ele não exista
 
-1 - aceitar argumento de entrada (opcional) e saida (opcioonal) para as imagens, caso algum não for 
-    fornecido, então devera ler-se / escrever-se as imagens no diretorio do app
+controller/compress-url.js
+    1 - adicionar tratamento de erro no case de erro de requisição / url invalida
 
-2 - comprimir imagens .jpg .png, etc...
-
-3 - argumento de entrada pode ser tanto url quanto arquivo local. Caso seja url, devera trabalhar
-    com obter / escrever os dados da imagem em forma de 'stream'
-
-refatoração:
-1 - dividir função compress em funçoes menores
-2 - (talvez) dar a opção de comprimir um arquivo especifíco
+dica: 
+    1 - procurar uma lib para trabalhar com os argumentos no cmd
