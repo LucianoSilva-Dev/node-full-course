@@ -2,7 +2,11 @@ const sharp = require("sharp")
 const fs = require("fs").promises
 const path = require("path")
 
-const compressDir = async (input, output) => {
+function SharpCompressionErrorHandler(err, imageNameOrURL) {
+    console.log(`Erro durante a compressão da imagem ${imageNameOrURL}\nErro: ${err.message}`)
+}
+
+async function compressDir(input, output) {
     const dir = await fs.readdir(input)
                         .catch(err => {
                             console.log(`Não foi possivel localizar o diretório de entrada ${err.path}`)
@@ -27,11 +31,13 @@ const compressDir = async (input, output) => {
                                         progressive: true,
                                         quality: 90})
                                      .toBuffer()
+                                     .catch(err => SharpCompressionErrorHandler(err, file))
         
         if(output){
             await fs.writeFile(path.join(output, file), compressedFile)
                   .catch(err => 
                   console.log(`Não foi possivel achar o diretório de saida ${path.dirname(err.path)}`))
+                  
         }
         else{
             await fs.writeFile(file, compressedFile)

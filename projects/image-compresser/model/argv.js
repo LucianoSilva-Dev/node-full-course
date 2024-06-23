@@ -1,31 +1,25 @@
 const path = require("path")
 
 //argumentos
-function parseArgs(args) {
-    const isURLRegex = /^https?:\/\//
-    
-    const [input, output] = args
-
+function parseArgs(rawArgs) {
     let inputDirectory
-    let outputDirectory = output ? output : "."
-    let type //tipo de input (url, diretorio e futuramente arquivo)
+    let outputDirectory = rawArgs.output ? rawArgs.output : "."
+    let type //tipo de input (url, diretorio e ou arquivo)
 
-    //tratamento do input
-    if(input){
-        if(!isURLRegex.test(input)) {
-            inputDirectory = path.join(path.dirname(input), path.basename(input))
-            type = "directory"
-        }
-        else{
-            inputDirectory = input
-            type = "url"
-        }
-        
+    if(rawArgs.url){
+       inputDirectory = rawArgs.url
+       type = "url"
+o
     }
 
-    else{
-        inputDirectory = "."
+    else if(rawArgs.directory){
+        inputDirectory = rawArgs.directory
         type = "directory"
+    }
+
+    else if(rawArgs.file){
+        inputDirectory = rawArgs.file
+        type = "file"
     }
 
     return [inputDirectory, outputDirectory, type]

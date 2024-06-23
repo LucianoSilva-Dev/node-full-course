@@ -1,10 +1,12 @@
 const parseArgs = require("./model/argv")
+
 const compressDir = require("./controller/compress-dir")
 const compressUrl = require("./controller/compress-url")
+const compressFile = require("./controller/compress-file")
 
 //trata os args passados no cmd
-const args = process.argv.slice(2)
-const [input, outputdirectory, type] = parseArgs(args)
+const rawArgs = require("args-parser")(process.argv)
+const [input, outputdirectory, type] = parseArgs(rawArgs)
 
 switch(type){
     case "directory":
@@ -13,5 +15,10 @@ switch(type){
         break
 
     case "url":
-        compressUrl(input, outputdirectory).catch(err => console.log(err))
+        compressUrl(input, outputdirectory)
+        break
+    
+    case "file":
+        compressFile(input, outputdirectory)
+        break
 }

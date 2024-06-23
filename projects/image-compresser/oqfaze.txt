@@ -1,8 +1,0 @@
-controller/compress-dir.js
-    1 - criar o diretorio output fornecido caso ele não exista
-
-controller/compress-url.js
-    1 - adicionar tratamento de erro no case de erro de requisição / url invalida
-
-dica: 
-    1 - procurar uma lib para trabalhar com os argumentos no cmd
