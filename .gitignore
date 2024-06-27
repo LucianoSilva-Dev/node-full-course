@@ -6,3 +6,5 @@
 /projects/image-compresser/node_modules
 /projects/simple-CRUD/node_modules
 /projects/simple-CRUD/.env
+/projects/jwt-auth/node_modules
+/projects/jwt-auth/.env
